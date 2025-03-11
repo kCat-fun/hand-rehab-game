@@ -37,7 +37,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, watch } from 'vue';
+import { ref, computed } from 'vue';
 import type { HandGestureType } from '../types';
 
 const props = defineProps<{
@@ -178,16 +178,6 @@ const completeGame = () => {
     }
 };
 
-// ジェスチャーの監視
-watch(() => props.currentGesture, (newGesture, oldGesture) => {
-    // console.log(`Gesture changed: ${oldGesture} -> ${newGesture}`);
-
-    if (!isGameStarted.value || isGameCompleted.value) return;
-
-    if (newGesture === currentTarget.value && progress.value >= 100) {
-        completeCurrentExercise();
-    }
-});
 
 </script>
 
